@@ -1,0 +1,67 @@
+* static props works takes over when we pass no prop into our component
+* when static prop is defined and data is passed into component it rewrites the static props which is then displayed.
+
+State can be defined in this way for class based components
+    constructor() {
+        super();
+        this.state = {
+        id: "id",
+        login: "mojombo",
+        avatar_url: "https://avatars.githubusercontent.com/u/1?v=4",
+        html_url: "https://github.com/mojombo",
+        };
+    }
+
+* with class based components, we need the render methods first before the return.
+* classes are used with components in other to get the render()
+* functions components are used for stateless components
+
+
+CLASS BASED component WITH DEFAULT props
+    class Navbar extends Component {
+    // passing static props
+    static defaultProps = {
+        title: 'Github Finder',
+        icon: 'fab fa-github'
+    }
+
+    // Protypes
+    static propTypes = {
+        title: PropTypes.string.isRequired,
+        icon: PropTypes.string.isRequired
+    }
+
+    render() {
+        return (
+            <nav className='navbar bg-primary'>
+                <h1>
+                    <i className={this.props.icon}></i>{ this.props.title }
+                </h1>
+            </nav>
+        )
+    }
+}
+
+FUNCTION BASED COMPONENT WITH STATIC props
+const Navbar = (props) => {
+  return (
+    <nav className='navbar bg-primary'>
+      <h1>
+        <i className={props.icon}></i>
+        {props.title}
+      </h1>
+    </nav>
+  );
+};
+
+// passing static props
+Navbar.defaultProps = {
+  title: "Github Finder",
+  icon: "fab fa-github",
+};
+
+// Protypes
+Navbar.propTypes = {
+  title: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+};
