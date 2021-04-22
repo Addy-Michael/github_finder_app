@@ -73,3 +73,29 @@ Navbar.propTypes = {
   title: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
 };
+
+// useEffect
+const repos;
+
+useEffect(() => {
+    getUser(match.params.login);
+    getUserRepos(match.params.login);
+  }, []); // setting it to an empty array makes it run once
+
+  useEffect(() => {
+    getUser(match.params.login);
+    getUserRepos(match.params.login);
+  }, [repos]); // the method will run if the repos value is changed
+
+
+ABOVE ROUTE OPTION IS USED WHEN PROPS ARE PASSED INTO COMPONENTS OR NAVIGATES TO TWO OR MORE COMPONENTS
+<Route
+  exact
+  path='/'
+  render={(props) => (
+    <Fragment>
+      <Search />
+      <Users />
+    </Fragment>
+  )}
+/>
